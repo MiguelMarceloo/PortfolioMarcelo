@@ -7,6 +7,7 @@ import About from "../components/About";
 import Techstack from "../components/Techstack";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const App = () => {
   const [techstackInView, setTechstackInView] = useState(false);
@@ -33,8 +34,10 @@ const App = () => {
 
   useEffect(() => {
     const handleScrollAbout = () => handleScroll("about", setAboutInView);
-    const handleScrollTechstack = () => handleScroll("techstack", setTechstackInView);
-    const handleScrollProjects = () => handleScroll("projects", setProjectsInView);
+    const handleScrollTechstack = () =>
+      handleScroll("techstack", setTechstackInView);
+    const handleScrollProjects = () =>
+      handleScroll("projects", setProjectsInView);
     const handleScrollContact = () => handleScroll("contact", setContactInView);
 
     window.addEventListener("scroll", handleScrollAbout);
@@ -59,8 +62,11 @@ const App = () => {
       {/* Techstack Section with scroll animation */}
       <motion.div
         id="techstack"
-        initial={{ opacity: 0, y: 50 }}  // Start off-screen with opacity 0
-        animate={{ opacity: techstackInView ? 1 : 0, y: techstackInView ? 0 : 50 }} // Slide up and fade in
+        initial={{ opacity: 0, y: 50 }} // Start off-screen with opacity 0
+        animate={{
+          opacity: techstackInView ? 1 : 0,
+          y: techstackInView ? 0 : 50,
+        }} // Slide up and fade in
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Techstack />
@@ -69,7 +75,7 @@ const App = () => {
       {/* About Section with scroll animation */}
       <motion.div
         id="about"
-        initial={{ opacity: 0, y: 50 }}  // Start off-screen with opacity 0
+        initial={{ opacity: 0, y: 50 }} // Start off-screen with opacity 0
         animate={{ opacity: aboutInView ? 1 : 0, y: aboutInView ? 0 : 50 }} // Slide up and fade in
         transition={{ duration: 1, ease: "easeOut" }}
       >
@@ -79,8 +85,11 @@ const App = () => {
       {/* Projects Section with scroll animation */}
       <motion.div
         id="projects"
-        initial={{ opacity: 0, y: 50 }}  // Start off-screen with opacity 0
-        animate={{ opacity: projectsInView ? 1 : 0, y: projectsInView ? 0 : 50 }} // Slide up and fade in
+        initial={{ opacity: 0, y: 50 }} // Start off-screen with opacity 0
+        animate={{
+          opacity: projectsInView ? 1 : 0,
+          y: projectsInView ? 0 : 50,
+        }} // Slide up and fade in
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Projects />
@@ -89,11 +98,21 @@ const App = () => {
       {/* Contact Section with scroll animation */}
       <motion.div
         id="contact"
-        initial={{ opacity: 0, y: 50 }}  // Start off-screen with opacity 0
+        initial={{ opacity: 0, y: 50 }} // Start off-screen with opacity 0
         animate={{ opacity: contactInView ? 1 : 0, y: contactInView ? 0 : 50 }} // Slide up and fade in
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Contact />
+      </motion.div>
+
+      {/* Contact Section with scroll animation */}
+      <motion.div
+        id="contact"
+        initial={{ opacity: 0, y: 50 }} // Start off-screen with opacity 0
+        animate={{ opacity: contactInView ? 1 : 0, y: contactInView ? 0 : 50 }} // Slide up and fade in
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <Footer />
       </motion.div>
     </div>
   );
