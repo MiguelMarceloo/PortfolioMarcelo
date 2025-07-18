@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaAws, FaGithub, FaWordpress, FaGitAlt, FaDocker, FaLaravel, FaSass } from "react-icons/fa";
 import { SiTailwindcss, SiTypescript, SiRedis, SiNextdotjs, SiVuedotjs, SiMongodb } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
@@ -7,6 +7,30 @@ import { SiMysql, SiMariadb } from "react-icons/si";
 import Marquee from "react-fast-marquee";
 
 const Techstack = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const techStackItems = [
     { icon: <FaHtml5 className="text-orange-500 text-7xl" />, name: "HTML" },
     { icon: <FaCss3Alt className="text-blue-500 text-7xl" />, name: "CSS" },
@@ -33,12 +57,14 @@ const Techstack = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="techstack"
-      className="min-h-screen bg-[#171719] text-white flex items-center justify-center"
+      className="section min-h-screen bg-[#171719] text-white flex items-center justify-center"
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-[16px] font-bold text-center mb-8 font-spaceGrotesk text-[#7e7e7f] uppercase">Tech Stack</h2>
-
+        <h2 className="text-[16px] font-bold text-center mb-8 font-spaceGrotesk text-[#7e7e7f] uppercase">
+          Tech Stack
+        </h2>
         <Marquee speed={70} gradient={false} pauseOnHover>
           {techStackItems.map((item, index) => (
             <div key={index} className="flex flex-col items-center mx-8">
