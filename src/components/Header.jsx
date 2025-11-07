@@ -21,27 +21,31 @@ const Header = () => {
       id="home"
       className="section bg-[#171719] text-white py-4"
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold flex items-center">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <img src={likedIcon} alt="LinkedIn Icon" className="inline w-8 h-8 mr-2 hover:opacity-80 transition-opacity duration-300" />
+      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex items-center gap-2">
+          <a href="https://www.linkedin.com/in/miguelmarcelooo/" target="_blank" rel="noopener noreferrer">
+            <img src={likedIcon} alt="LinkedIn Icon" className="inline w-6 h-6 md:w-8 md:h-8 hover:opacity-80 transition-opacity duration-300" />
           </a>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <img src={facebookIcon} alt="Facebook Icon" className="inline w-8 h-8 mr-2 hover:opacity-80 transition-opacity duration-300" />
+            <img src={facebookIcon} alt="Facebook Icon" className="inline w-6 h-6 md:w-8 md:h-8 hover:opacity-80 transition-opacity duration-300" />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <img src={twitterIcon} alt="Twitter Icon" className="inline w-8 h-8 mr-2 hover:opacity-80 transition-opacity duration-300" />
+            <img src={twitterIcon} alt="Twitter Icon" className="inline w-6 h-6 md:w-8 md:h-8 hover:opacity-80 transition-opacity duration-300" />
           </a>
-        </h1>
-        <div className="flex items-center space-x-2 font-spaceGrotesk">
-          <img src={sendIcon} alt="Send Icon" className="inline w-4 h-4" />
-          <span className="text-sm text-[#7e7e7f] pr-4">miguelmarcelooo25@gmail.com</span>
-          <div className="flex items-center space-x-2">
-            <img src={locationIcon} alt="Location Icon" className="inline w-4 h-4" />
-            <span className="text-sm text-[#7e7e7f] pr-4">Valenzuela City</span>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 font-spaceGrotesk text-center sm:text-left">
+          <div className="flex items-center gap-1">
+            <img src={sendIcon} alt="Send Icon" className="inline w-3 h-3 md:w-4 md:h-4" />
+            <span className="text-xs md:text-sm text-[#7e7e7f]">miguelmarcelooo25@gmail.com</span>
           </div>
-          <img src={callIcon} alt="Call Icon" className="inline w-4 h-4" />
-          <span className="text-sm text-[#7e7e7f] pr-4">+63 908 876 0769</span>
+          <div className="flex items-center gap-1">
+            <img src={locationIcon} alt="Location Icon" className="inline w-3 h-3 md:w-4 md:h-4" />
+            <span className="text-xs md:text-sm text-[#7e7e7f]">Punturin Valenzuela City</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <img src={callIcon} alt="Call Icon" className="inline w-3 h-3 md:w-4 md:h-4" />
+            <span className="text-xs md:text-sm text-[#7e7e7f]">+63 908 876 0769</span>
+          </div>
         </div>
       </div>
     </header>

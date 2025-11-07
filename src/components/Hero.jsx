@@ -58,32 +58,39 @@ const Hero = () => {
       </motion.div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center px-4">
         {/* Hero Title Animation */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold font-spaceGrotesk"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-spaceGrotesk"
           initial={{ opacity: 0, y: -50, rotate: -20, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          Full Stack
+          Lawrence Miguel T. Marcelo
         </motion.h1>
+
+        <motion.h2
+          className="text-xl sm:text-2xl md:text-3xl font-semibold font-spaceGrotesk text-[#7e7e7f] mt-4"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+        >
+          Software Engineer
+        </motion.h2>
 
         {/* Hero Description Animation */}
         <motion.p
-          className="text-sm text-[#7e7e7f] mt-4 font-spaceGrotesk text-center md:w-1/2 mx-auto"
+          className="text-xs sm:text-sm md:text-base text-[#7e7e7f] mt-6 font-spaceGrotesk text-center max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-4"
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
         >
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-          Velit officia consequat duis enim velit mollit. Exercitation veniam
-          consequat sunt nostrud amet.
+          Results-driven and detail-oriented Software Engineer with extensive experience in designing, developing, and deploying full-stack web applications. Highly proficient in modern backend technologies and database systems, with a strong emphasis on MongoDB for scalable data architecture.
         </motion.p>
 
         {/* Button Animation with Bounce Effect */}
         <motion.div
-          className="flex items-center justify-center space-x-4 mt-8"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8"
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{
@@ -96,16 +103,22 @@ const Hero = () => {
           }}
         >
           <a
-            href="#projects"
-            className="px-7 py-2 font-spaceGrotesk bg-white text-[#7e7e7f] text-sm font-semibold rounded-full hover:bg-gray-200"
+            href="#experience"
+            className="px-6 sm:px-7 py-2 font-spaceGrotesk bg-white text-[#7e7e7f] text-xs sm:text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors w-full sm:w-auto text-center"
           >
-            Projects
+            Experience
           </a>
           <a
             href="#techstack"
-            className="px-7 py-2 font-spaceGrotesk bg-white text-[#7e7e7f] text-sm font-semibold rounded-full hover:bg-gray-200"
+            className="px-6 sm:px-7 py-2 font-spaceGrotesk bg-white text-[#7e7e7f] text-xs sm:text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors w-full sm:w-auto text-center"
           >
             Tech Stack
+          </a>
+          <a
+            href="#contact"
+            className="px-6 sm:px-7 py-2 font-spaceGrotesk bg-white text-[#7e7e7f] text-xs sm:text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors w-full sm:w-auto text-center"
+          >
+            Contact Me
           </a>
         </motion.div>
       </div>
