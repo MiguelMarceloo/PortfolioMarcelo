@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,140 +8,70 @@ const Menu = () => {
     setIsOpen(!isOpen);
   };
 
+  const menuItems = [
+    { label: "Projects", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
+    { label: "Tech", href: "#techstack" },
+    { label: "Contact", href: "#contact" },
+  ];
+
   return (
-    <nav className="bg-[#171719] py-3 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-[#7e7e7f] hover:text-white focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            {isOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-4xl">
+      <div className="bg-card/40 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex justify-between items-center shadow-2xl transition-all duration-300">
+        <a href="#home" className="text-xl font-bold font-poppins bg-gradient-to-r from-accent-primary to-accent-tertiary bg-clip-text text-transparent group relative">
+          MM
+          <div className="absolute -inset-2 bg-accent-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+        </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 text-lg font-semibold justify-center font-spaceGrotesk">
-          <li>
-            <a href="#home" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              Home
+        <div className="hidden md:flex items-center gap-8 bg-card/50 backdrop-blur-xl border border-white/10 px-8 py-3 rounded-2xl shadow-xl">
+          {menuItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-xs font-poppins font-bold uppercase tracking-widest text-muted hover:text-white transition-all transform hover:scale-110 active:scale-95"
+            >
+              {item.label}
             </a>
-          </li>
-          <li>
-            <a href="#about" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#experience" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              Experience
-            </a>
-          </li>
-          <li>
-            <a href="#education" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              Education
-            </a>
-          </li>
-          <li>
-            <a href="#certifications" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              Certifications
-            </a>
-          </li>
-          <li>
-            <a href="#techstack" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              Tech Stack
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="text-sm text-[#7e7e7f] hover:text-white transition-colors">
-              Contact
-            </a>
-          </li>
-        </ul>
+          ))}
+        </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <ul className="md:hidden flex flex-col space-y-4 mt-4 font-spaceGrotesk">
-            <li>
-              <a
-                href="#home"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#experience"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                Experience
-              </a>
-            </li>
-            <li>
-              <a
-                href="#education"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                Education
-              </a>
-            </li>
-            <li>
-              <a
-                href="#certifications"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                Certifications
-              </a>
-            </li>
-            <li>
-              <a
-                href="#techstack"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                Tech Stack
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                onClick={toggleMenu}
-                className="block text-sm text-[#7e7e7f] hover:text-white transition-colors"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-        )}
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden text-white p-2 hover:bg-white/5 rounded-xl transition-colors"
+        >
+          {isOpen ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="absolute top-full left-0 right-0 mt-4 bg-card/90 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 md:hidden shadow-3xl"
+        >
+          <ul className="flex flex-col space-y-6">
+            {menuItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  onClick={toggleMenu}
+                  className="block text-xl font-poppins font-bold text-center text-white hover:text-accent-primary transition-colors py-2"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
     </nav>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Header from "../components/Header";
 import Menu from "../components/Menu";
 import Hero from "../components/Hero";
+import Projects from "../components/Projects";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Education from "../components/Education";
@@ -10,8 +10,10 @@ import Certifications from "../components/Certifications";
 import Techstack from "../components/Techstack";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import CustomCursor from "../components/CustomCursor";
 
-const App = () => {
+const Home = () => {
+  const [projectsInView, setProjectsInView] = useState(false);
   const [aboutInView, setAboutInView] = useState(false);
   const [experienceInView, setExperienceInView] = useState(false);
   const [educationInView, setEducationInView] = useState(false);
@@ -40,6 +42,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    const handleScrollProjects = () => handleScroll("projects", setProjectsInView);
     const handleScrollAbout = () => handleScroll("about", setAboutInView);
     const handleScrollExperience = () => handleScroll("experience", setExperienceInView);
     const handleScrollEducation = () => handleScroll("education", setEducationInView);
@@ -47,6 +50,7 @@ const App = () => {
     const handleScrollTechstack = () => handleScroll("techstack", setTechstackInView);
     const handleScrollContact = () => handleScroll("contact", setContactInView);
 
+    window.addEventListener("scroll", handleScrollProjects);
     window.addEventListener("scroll", handleScrollAbout);
     window.addEventListener("scroll", handleScrollExperience);
     window.addEventListener("scroll", handleScrollEducation);
@@ -55,6 +59,7 @@ const App = () => {
     window.addEventListener("scroll", handleScrollContact);
 
     return () => {
+      window.removeEventListener("scroll", handleScrollProjects);
       window.removeEventListener("scroll", handleScrollAbout);
       window.removeEventListener("scroll", handleScrollExperience);
       window.removeEventListener("scroll", handleScrollEducation);
@@ -65,10 +70,20 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <Header />
+    <main className="bg-background min-h-screen selection:bg-accent-primary/30 selection:text-white cursor-none">
+      <CustomCursor />
       <Menu />
       <Hero />
+
+      {/* Projects Section with scroll animation */}
+      <motion.div
+        id="projects"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: projectsInView ? 1 : 0, y: projectsInView ? 0 : 50 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <Projects />
+      </motion.div>
 
       {/* About Section with scroll animation */}
       <motion.div
@@ -132,8 +147,8 @@ const App = () => {
 
       {/* Footer */}
       <Footer />
-    </div>
+    </main>
   );
 };
 
-export default App;
+export default Home;
