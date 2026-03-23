@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub, FiLayout, FiShield, FiMousePointer, FiDatabase } from "react-icons/fi";
+import { FiExternalLink, FiLayout, FiShield, FiMousePointer, FiDatabase } from "react-icons/fi";
 
 const Projects = () => {
   const projects = [

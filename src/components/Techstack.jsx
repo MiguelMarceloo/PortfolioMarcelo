@@ -4,12 +4,11 @@ import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaAws, FaGithub, FaWordpress, Fa
 import { SiTailwindcss, SiTypescript, SiRedis, SiNextdotjs, SiVuedotjs, SiMongodb, SiNginx, SiGithubactions, SiJavascript, SiPhp } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import { SiMysql } from "react-icons/si";
-import Marquee from "react-fast-marquee";
-
 const Techstack = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -20,13 +19,13 @@ const Techstack = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
